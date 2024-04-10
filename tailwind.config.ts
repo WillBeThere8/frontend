@@ -19,6 +19,10 @@ const config = {
     },
     extend: {
       colors: {
+        defaultPrimary: "#FF8C94",
+        defaultSeconday: "#FFD700",
+        defaultAccent: "#8A2BE2",
+        defaultBackground: "#1F1F1F",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
