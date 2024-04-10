@@ -30,7 +30,9 @@ export default function FormTemplate(formdetails: Formdetails) {
       className={`font-poppins w-full h-screen flex items-center overflow-hidden`}
     >
       <div
-        className=" w-[30%] text-center flex justify-center items-center flex-col h-full bg-contain bg-[#AFCBE3] bg-center bg-no-repeat"
+        className={` w-[30%] text-center flex justify-center items-center flex-col h-full bg-contain ${
+          formdetails.page === "Login" ? "bg-[#EDD3B0]" : "bg-[#AFCBE3]"
+        }  bg-center bg-no-repeat`}
         style={{ backgroundImage: `url(/Images/svgs/${formdetails.img}.svg) ` }}
       >
         <p className="font-semibold text-[2.5rem]">{formdetails.welcome}</p>
