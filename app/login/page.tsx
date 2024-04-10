@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import FormTemplate from "../ui/FormTemplate";
+import FormTemplate from "../_ui/FormTemplate";
 
 export const metadata: Metadata = {
   title: "Register",
