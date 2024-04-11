@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Metadata } from "next";
 import {
   Card,
   CardContent,
@@ -30,19 +29,17 @@ export default function FormTemplate(formdetails: Formdetails) {
       className={`font-poppins w-full h-screen flex items-center overflow-hidden`}
     >
       <div
-        className={` w-[30%] text-center flex justify-center items-center flex-col h-full bg-contain ${
-          formdetails.page === "Login" ? "bg-[#EDD3B0]" : "bg-[#AFCBE3]"
-        }  bg-center bg-no-repeat`}
-        style={{ backgroundImage: `url(/Images/svgs/${formdetails.img}.svg) ` }}
+        className="w-[30%] text-center justify-center items-center flex-col h-full bg-contain bg-[#AFCBE3] bg-center bg-no-repeat hidden md:flex"
+        style={{ backgroundImage: `url(/Images/svgs/${formdetails.img}.svg)` }}
       >
-        <p className="font-semibold text-[2.5rem]">{formdetails.welcome}</p>
-        <p className="text-[1.25rem]">Your number 1 event app</p>
+        <p className="text-[2.5rem] font-extrabold">{formdetails.welcome}</p>
+        <p className="text-[1.25rem] font-semibold">Your number 1 event app</p>
       </div>
-      <Card className="border-none h-full bg-defaultBackground w-[70%] rounded-none text-white px-[4.43rem] pt-[1.188rem] flex flex-col justify-center">
+      <Card className="border-none h-full bg-defaultBackground md:w-[70%] w-full rounded-none text-white md:px-[4.43rem] pt-[1.188rem] flex flex-col justify-center">
         <CardHeader>
           <CardTitle className="mb-[1.593rem]">{formdetails.page}</CardTitle>
 
-          <hr className="w-[3rem] bg-defaultAccent border-none h-[0.3px] " />
+          <hr className="w-[3rem] bg-defaultAccent border-none h-[0.3px]" />
         </CardHeader>
 
         <CardContent className="mt-[1.5rem]">
@@ -81,7 +78,7 @@ export default function FormTemplate(formdetails: Formdetails) {
 
         <CardFooter className="flex flex-col items-start">
           <Button
-            className="flex gap-2 justify-center w-[18rem] mb-[1rem]"
+            className="flex gap-2 justify-center md:w-[18rem] mb-[1rem] w-full"
             type="submit"
           >
             <p className="font-semibold text-[1rem]">{formdetails.page}</p>
