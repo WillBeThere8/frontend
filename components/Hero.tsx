@@ -5,7 +5,7 @@ import Link from "next/link";
 
 function Hero() {
   return (
-    <div className="grid place-items-center grid-cols-2 max-sm:grid-cols-1 scrollbar-hide p-4">
+    <div className="grid place-items-center grid-cols-2 max-sm:grid-cols-1 scrollbar-hide p-4 h-auto bg-defaultBackground">
       <div className="pt-[60px] md:pt-0">
         <h2 className="text-[#fff] text-2xl md:text-5xl font-extrabold leading-tight pb-6">
           <span className="text-[#8a2be2]">Unlock</span> Unforgettable Memories.
@@ -18,7 +18,7 @@ function Hero() {
           <Link href={"/sign-up"}>Get Started Now</Link>
         </Button>
       </div>
-      <div>
+      <div className="">
         <Image
           src={"/Images/svgs/hero-photo.svg"}
           width={500}
