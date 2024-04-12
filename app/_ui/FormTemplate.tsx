@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Metadata } from "next";
 import {
   Card,
   CardContent,
@@ -30,15 +29,10 @@ export default function FormTemplate(formdetails: Formdetails) {
       className={`font-poppins w-full h-screen flex items-center overflow-hidden`}
     >
       <div
-<<<<<<< HEAD:app/ui/FormTemplate.tsx
         className={` w-[30%] text-center flex justify-center items-center flex-col h-full bg-contain ${
           formdetails.page === "Login" ? "bg-[#EDD3B0]" : "bg-[#AFCBE3]"
-        }  bg-center bg-no-repeat`}
+        }  bg-center bg-no-repeat hidden md:flex`}
         style={{ backgroundImage: `url(/Images/svgs/${formdetails.img}.svg) ` }}
-=======
-        className="w-[30%] text-center justify-center items-center flex-col h-full bg-contain bg-[#AFCBE3] bg-center bg-no-repeat hidden md:flex"
-        style={{ backgroundImage: `url(/Images/svgs/${formdetails.img}.svg)` }}
->>>>>>> 7d46c4b30c1c7e9f9ee206fb51a60bbfeb035cec:app/_ui/FormTemplate.tsx
       >
         <p className="text-[2.5rem] font-extrabold">{formdetails.welcome}</p>
         <p className="text-[1.25rem] font-semibold">Your number 1 event app</p>
