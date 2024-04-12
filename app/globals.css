@@ -8,6 +8,24 @@ html, body, :root{
   height: 100%;
 }
 
+.cl-formButtonPrimary,
+ .cl-internal-1fsg6zy{
+  background: #8A2BE2;
+}
+.cl-formButtonPrimary:hover,
+ .cl-internal-1fsg6zy:hover{
+  background: #5d1d99;
+}
+
+.cl-footerActionLink, 
+.cl-internal-15amzqo{
+  color: #8A2BE2;
+}
+.cl-footerActionLink:hover, 
+.cl-internal-15amzqo:hover{
+  color: #5d1d99;
+}
+
 .signinBg{
   background: linear-gradient(#000000cc, rgba(0, 0, 0, 0.719)), url('/Images/dj.jpg');
   background-repeat: no-repeat;
