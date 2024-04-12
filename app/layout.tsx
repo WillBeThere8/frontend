@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
-// import { poppins } from "./ui/font";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-export const poppins = Poppins({
-  weight: ["400", "600", "700"],
+const poppins = Poppins({
   subsets: ["latin"],
+  weight: "100"
 });
+
 export const metadata: Metadata = {
   title: {
     template: "%s | Will Be There",
@@ -24,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${poppins.className}`}>
+      <body className={`${poppins.className} ${poppins.className}`}>
         {children}
       </body>
     </html>
