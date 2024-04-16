@@ -23,7 +23,7 @@ export default function EventTemplate() {
   };
 
   return (
-    <Card className="border-none h-full bg-defaultBackground md:w-[70%] w-full  rounded-none text-white md:px-[4.43rem] pt-[1.188rem] flex flex-col justify-center relative">
+    <Card className="border-none h-full bg-defaultBackground md:w-[70%] w-full  rounded-none text-white md:px-[4.43rem] yt-[1.188rem]  flex flex-col  relative">
       <CardHeader>
         <CardTitle>Create New Event</CardTitle>
         <CardDescription className="text-[#8F8F8F]">

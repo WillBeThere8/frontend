@@ -37,7 +37,7 @@ export const Demo = () => {
 
         <div
           className={`flex flex-col items-center w-full ${
-            selectedImage ? "h-[300px]" : ""
+            selectedImage ? "h-[200px]" : ""
           } py-2 rounded-2xl ${
             textContent ? "border-dashed border-2 border-[#ffffff]" : ""
           }  justify-center bg-cover bg-center text-center mt-4`}
@@ -126,7 +126,7 @@ export const SmartDatetimePicker = () => {
   return (
     <div className="flex flex-col items-start justify-center ">
       <p>Event Date & Time*</p>
-      <div className="flex w-full items-center justify-between  bg-[#4A4A4A] shadow-sm transition-all focus-visible:ring-offset-0 focus-visible:ring-0 border-0 rounded-md overflow-hidden mb-[0.875rem]">
+      <div className="flex w-full items-center justify-between  bg-[#4A4A4A] shadow-sm transition-all focus-visible:ring-offset-0 focus-visible:ring-0 border-0 rounded-md overflow-hidden mb-[2rem]">
         <NaturalLanguageInput
           expiresAt={expiresAt}
           setExpiresAt={setExpiresAt}
