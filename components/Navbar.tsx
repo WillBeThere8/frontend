@@ -21,7 +21,7 @@ function   NavBar() {
           <h1 className="text-[#FF8C94] text-[22px]">ADH24G8</h1>
           <div className="flex gap-[20px] xl:gap-[50px] text-[16px] items-center select-none text-[#FFFFFF]">
             <Link
-              href="/faq"
+              href="/faqs"
               className={`hover:text-[#8A2BE2] hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
             >
               FAQs
@@ -78,7 +78,7 @@ function   NavBar() {
             <div className="flex flex-col gap-8 mt-8 mx-4 bg-[#1F1F1F]  ">
               <div className="flex gap-[20px] xl:gap-[50px] text-[16px] text-[#ffffff] flex-col select-none ">
                 <Link
-                  href="/faq"
+                  href="/faqs"
                   className={`hover:text-[#8a2be2]  font-[600] cursor-pointer flex items-center gap-2`}
                 >
                   FAQs

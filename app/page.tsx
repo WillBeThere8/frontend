@@ -18,7 +18,7 @@ export default function Home() {
   }, [user, router]);
 
   return (
-    <div className="bg-defaultBackground  overflow-y-scroll no-scrollbar md:h-screen scrollbar ">
+    <div className="bg-defaultBackground h-screen  overflow-y-scroll no-scrollbar max-sm:h-screen">
       <Navbar />
       <Hero />
     </div>
