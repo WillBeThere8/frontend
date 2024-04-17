@@ -2,40 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-
-html, body, :root{
+html,
+body,
+:root {
   box-sizing: border-box;
   height: 100%;
 }
 
 .cl-formButtonPrimary,
- .cl-internal-1fsg6zy{
-  background: #8A2BE2;
+.cl-internal-1fsg6zy {
+  background: #8a2be2;
 }
 .cl-formButtonPrimary:hover,
- .cl-internal-1fsg6zy:hover{
+.cl-internal-1fsg6zy:hover {
   background: #5d1d99;
 }
 
-.cl-footerActionLink, 
-.cl-internal-15amzqo{
-  color: #8A2BE2;
+.cl-footerActionLink,
+.cl-internal-15amzqo {
+  color: #8a2be2;
 }
-.cl-footerActionLink:hover, 
-.cl-internal-15amzqo:hover{
+.cl-footerActionLink:hover,
+.cl-internal-15amzqo:hover {
   color: #5d1d99;
 }
 
-.signinBg{
-  background: linear-gradient(#000000cc, rgba(0, 0, 0, 0.719)), url('/Images/dj.jpg');
+.signinBg {
+  background: linear-gradient(#000000cc, rgba(0, 0, 0, 0.719)),
+    url("/Images/meet-and-greet.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   width: 100%;
 }
 
-.signupBg{
-  background: linear-gradient(#000000cc, rgba(0, 0, 0, 0.719)), url('/Images/blur.jpg');
+.signupBg {
+  background: linear-gradient(#000000cc, rgba(0, 0, 0, 0.719)),
+    url("/Images/signup.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -74,7 +77,6 @@ html, body, :root{
     --radius: 0.5rem;
   }
 
- 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -146,4 +148,10 @@ html, body, :root{
     /* Customize the scrollbar thumb */
     border-radius: 20px;
     background-color: #333;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+
 }
