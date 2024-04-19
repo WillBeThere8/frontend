@@ -1,9 +1,12 @@
-import React from "react";
+import { Metadata } from "next";
 
+ export const metadata: Metadata = {
+   title: "Dashboard",
+ }
 const Dashboard = () => {
+ 
   return (
     <div>
-      <h1 className="text-white font-bold text-3xl p-4"> Welcome to Dashboard</h1>
     </div>
   );
 };
