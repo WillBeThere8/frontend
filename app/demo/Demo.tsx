@@ -10,13 +10,15 @@ interface NaturalLanguageInputProps {
   setExpiresAt: (date: Date) => void;
 }
 
-export const Demo = () => {
+export const Demo = ({ onChange }: { onChange: (imageUrl: string) => void }) => {
   const [selectedImage, setSelectedImage] = useState("");
   const [textContent, setTextContent] = useState(true);
   function uploadImage(e: any) {
     let imgLink = URL.createObjectURL(e.target.files[0]);
     setSelectedImage(imgLink);
     setTextContent(false);
+    // Call onChange with the image link
+    onChange(imgLink);
   }
   return (
     <>
@@ -36,11 +38,9 @@ export const Demo = () => {
         />
 
         <div
-          className={`flex flex-col items-center w-full ${
-            selectedImage ? "h-[200px]" : ""
-          } py-2 rounded-2xl ${
-            textContent ? "border-dashed border-2 border-[#ffffff]" : ""
-          }  justify-center bg-cover bg-center text-center mt-4`}
+          className={`flex flex-col items-center w-full ${selectedImage ? "h-[200px]" : ""
+            } py-2 rounded-2xl ${textContent ? "border-dashed border-2 border-[#ffffff]" : ""
+            }  justify-center bg-cover bg-center text-center mt-4`}
           style={{ backgroundImage: `url(${selectedImage}) ` }}
         >
           {textContent && (
@@ -97,7 +97,8 @@ const NaturalLanguageInput = ({
 const DateTimeLocalInput = ({
   expiresAt,
   setExpiresAt,
-}: NaturalLanguageInputProps) => {
+  onChange
+}: NaturalLanguageInputProps & { onChange: (date: Date | null) => void }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   return (
     <input
@@ -108,6 +109,9 @@ const DateTimeLocalInput = ({
       onChange={(e) => {
         const expiryDate = new Date(e.target.value);
         setExpiresAt(expiryDate);
+
+        // Call onChange with the expiryDate
+        onChange(expiryDate);
 
         if (inputRef.current) {
           inputRef.current.value = formatDateTime(expiryDate);
@@ -123,6 +127,12 @@ export const SmartDatetimePicker = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [expiresAt, setExpiresAt] = useState<Date | null>(null);
 
+  // Define a handler for the onChange event of DateTimeLocalInput
+  const handleDateTimeChange = (date: Date | null) => {
+    // Do something with the date, if needed
+    console.log("Date changed:", date);
+  };
+
   return (
     <div className="flex flex-col items-start justify-center ">
       <p className="font-semibold text-slate-100">Event Date & Time*</p>
@@ -131,7 +141,7 @@ export const SmartDatetimePicker = () => {
           expiresAt={expiresAt}
           setExpiresAt={setExpiresAt}
         />
-        <DateTimeLocalInput expiresAt={expiresAt} setExpiresAt={setExpiresAt} />
+        <DateTimeLocalInput expiresAt={expiresAt} setExpiresAt={setExpiresAt} onChange={handleDateTimeChange} />
       </div>
     </div>
   );

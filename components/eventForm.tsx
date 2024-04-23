@@ -5,24 +5,44 @@ import React, { useEffect, useState } from 'react'
 import { Button } from './ui/button'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './ui/card'
 import { Textarea } from './ui/textarea'
+import supabase from '@/config/supabase'
 
 const EventForm = () => {
 
-    const [eventName, setEventName] = useState('');
-    const [eventDescription, setEventDescription] = useState('');
-    const [eventTime, setEventTime] = useState('');
-    const [eventDate, setEventDate] = useState('');
-    const [eventLocation, setEventLocation] = useState('');
-    const [eventBanner, setEventBanner] = useState('');
-    const [formError, setFormError] = useState('');
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    // const [time, setTime] = useState('');
+    // const [date, setDate] = useState('');
+    const [location, setLocation] = useState('');
+    const [banner, setBanner] = useState('');
+    const [formError, setFormError] = useState<string | null>('');
 
-    const handleSubmit = async (e: any) => {
+    const handleDemoChange = (imageUrl: any) => {
+        // Handle the change event for Demo component
+        // For example, you can set the event banner state here
+        setBanner(imageUrl);
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        if (eventName || eventDescription || eventTime || eventDate || eventLocation) {
+        if (!name || !description || !location) {
+            setFormError("Please fill in all fields correctly")
+            return;
+        }
+        const { data, error } = await supabase.from('events').insert([
+            { name, description, location, banner},
+        ])
+
+        if(error) {
+            console.log(error)
             setFormError("Please fill in all fields correctly")
         }
-        console.log(eventName, eventDescription, eventTime, eventDate, eventLocation)
+
+        if(data) {
+            console.log(data)
+            setFormError(null)
+        }
     };
 
     return (
@@ -40,37 +60,37 @@ const EventForm = () => {
                         <form>
                             <div className="grid w-full items-center gap-4">
                                 <div className="flex flex-col w-full">
-                                    <Demo />
+                                    <Demo onChange={handleDemoChange} />
                                     <div className="">
                                         <div className="name">
                                             <Label
-                                                htmlFor=""
+                                                htmlFor="title"
                                                 className="mb-2 font-semibold text-slate-100 text-sm"
                                                 aria-required="true"
                                             >
                                                 Event Name*
                                             </Label>
                                             <Input
-                                                id=""
+                                                id="title"
                                                 type="text"
                                                 className="bg-[#4A4A4A] border-0 focus-visible:ring-offset-0 focus-visible:ring-0 mb-3"
                                                 required
-                                                onChange={(e) => setEventName(e.target.value)}
+                                                onChange={(e) => setName(e.target.value)}
                                             />
                                         </div>
                                         <div className="title">
                                             <Label
-                                                htmlFor=""
+                                                htmlFor="description"
                                                 className="mb-2 font-semibold text-slate-100 text-sm"
                                                 aria-required="true"
                                             >
                                                 Event Description*
                                             </Label>
                                             <Textarea
-                                                id=""
+                                                id="description"
                                                 className="bg-[#4A4A4A] border-0 focus-visible:ring-offset-0 focus-visible:ring-0 mb-3"
                                                 required
-                                                onChange={(e) => setEventDescription(e.target.value)}
+                                                onChange={(e) => setDescription(e.target.value)}
 
                                             />
                                         </div>
@@ -79,18 +99,18 @@ const EventForm = () => {
                                         <SmartDatetimePicker />
                                         <div className="">
                                             <Label
-                                                htmlFor=""
+                                                htmlFor="location"
                                                 className="mb-2 font-semibold text-slate-100 text-sm"
                                                 aria-required="true"
                                             >
                                                 Event Location*
                                             </Label>
                                             <Input
-                                                id=""
+                                                id="location"
                                                 type="text"
                                                 className="bg-[#4A4A4A] border-0 focus-visible:ring-offset-0 focus-visible:ring-0 mb-3"
                                                 required
-                                                onChange={(e) => setEventLocation(e.target.value)}
+                                                onChange={(e) => setLocation(e.target.value)}
                                             />
                                         </div>
 

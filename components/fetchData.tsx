@@ -38,7 +38,7 @@ const FetchData: React.FC = () => {
             {eventData && (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center items-center w-full">
                     {eventData.map((event, index) => (
-                        <div key={index} className='flex flex-col justify-start items-start p-4 border border-slate-300 rounded-lg shadow-md'>
+                        <div key={index} className=''>
                             <EventCardData event={event} />
                         </div>
                     ))}

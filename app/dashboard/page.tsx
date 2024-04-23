@@ -9,7 +9,6 @@ import Image from "next/image";
 import { useUser } from "@clerk/clerk-react";
 
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import EventTemplate from "../_ui/EventTemplate";
 import FetchData from "@/components/fetchData";
 import EventForm from "@/components/eventForm";
 
@@ -25,9 +24,27 @@ const Dashboard = () => {
   else if (hours >= 17 && hours <= 24) greet = "evening";
 
   const [isClient, setIsClient] = useState(false);
+  const [hasData, setHasData] = useState(false); // Assuming you have a state to track data availability
 
   useEffect(() => {
     setIsClient(true);
+
+    // Fetch data from your API or wherever you get your data
+    const fetchData = async () => {
+      try {
+        // Make your API call here
+        const response = await fetch("events");
+        // Assuming response is in JSON format
+        const data = await response.json();
+        // Update the state based on data availability
+        setHasData(data.length > 0); // Assuming data is an array
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    // Call fetchData function
+    fetchData();
+
   }, []);
 
 
@@ -63,24 +80,27 @@ const Dashboard = () => {
               </DialogContent>
             </Dialog>
           </div>
-          <div className="flex justify-center items-center flex-col ">
-            <h4 className="text-[#FFFFFF] text-[24px] max-sm:text-[16px] max-md:text-[18px]">
-              Welcome to you events board!
-            </h4>
-            <h5 className="text-[#FFFFFF] text-[18px] max-sm:text-[12px] max-md:text-[12px]">
-              {" "}
-              You don’t have any events yet. Try to create one✨
-            </h5>
-            <Image
-              src={"/Images/svgs/event.svg"}
-              width={400}
-              height={300}
-              alt="event-photo"
-            />
-          </div>
+          {hasData ? ( // Conditionally render based on data availability
+            <FetchData />
+          ) : (
+            <div className="flex justify-center items-center flex-col ">
+              <h4 className="text-[#FFFFFF] text-[24px] max-sm:text-[16px] max-md:text-[18px]">
+                Welcome to your events board!
+              </h4>
+              <h5 className="text-[#FFFFFF] text-[18px] max-sm:text-[12px] max-md:text-[12px]">
+                You don’t have any events yet. Try to create one✨
+              </h5>
+              <Image
+                src={"/Images/svgs/event.svg"}
+                width={400}
+                height={300}
+                alt="event-photo"
+              />
+            </div>
+          )}
         </div>
       </div>
-      {/* <FetchData /> */}
+      <FetchData />
     </div>
   );
 };
