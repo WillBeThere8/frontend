@@ -10,6 +10,8 @@ import { useUser } from "@clerk/clerk-react";
 
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import EventTemplate from "../_ui/EventTemplate";
+import FetchData from "@/components/fetchData";
+import EventForm from "@/components/eventForm";
 
 const Dashboard = () => {
   const { user } = useUser();
@@ -27,6 +29,7 @@ const Dashboard = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
+
 
   return (
     <div className="h-screen bg-defaultBackground overflow-y-scroll no-scrollbar ">
@@ -56,7 +59,7 @@ const Dashboard = () => {
                 </Button>
               </DialogTrigger>
               <DialogContent>
-                <EventTemplate />
+                <EventForm />
               </DialogContent>
             </Dialog>
           </div>
@@ -77,6 +80,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      {/* <FetchData /> */}
     </div>
   );
 };

@@ -125,8 +125,8 @@ export const SmartDatetimePicker = () => {
 
   return (
     <div className="flex flex-col items-start justify-center ">
-      <p>Event Date & Time*</p>
-      <div className="flex w-full items-center justify-between  bg-[#4A4A4A] shadow-sm transition-all focus-visible:ring-offset-0 focus-visible:ring-0 border-0 rounded-md overflow-hidden mb-[2rem]">
+      <p className="font-semibold text-slate-100">Event Date & Time*</p>
+      <div className="flex w-full items-center justify-between  bg-[#4A4A4A] shadow-sm transition-all focus-visible:ring-offset-0 focus-visible:ring-0 border-0 rounded-md overflow-hidden mb-3">
         <NaturalLanguageInput
           expiresAt={expiresAt}
           setExpiresAt={setExpiresAt}
