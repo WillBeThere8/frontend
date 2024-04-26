@@ -6,6 +6,8 @@ import { Button } from './ui/button'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './ui/card'
 import { Textarea } from './ui/textarea'
 import supabase from '@/config/supabase'
+import { useToast } from "@/components/ui/use-toast"
+
 
 const EventForm = () => {
 
@@ -16,6 +18,7 @@ const EventForm = () => {
     const [location, setLocation] = useState('');
     const [banner, setBanner] = useState('');
     const [formError, setFormError] = useState<string | null>('');
+    const { toast } = useToast()
 
     const handleDemoChange = (imageUrl: any) => {
         // Handle the change event for Demo component
@@ -25,26 +28,36 @@ const EventForm = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-
         if (!name || !description || !location) {
             setFormError("Please fill in all fields correctly")
             return;
         }
         const { data, error } = await supabase.from('events').insert([
-            { name, description, location, banner},
+            { name, description, location, banner },
         ])
 
-        if(error) {
+        if (error) {
             console.log(error)
             setFormError("Please fill in all fields correctly")
         }
 
-        if(data) {
+        if (data) {
             console.log(data)
             setFormError(null)
+            // Reset form fields after successful submission
+            setName('');
+            setDescription('');
+            setLocation('');
+            setBanner('');
+            toast({
+                title: "Successful",
+                description: `Event has been created successfully`,
+              })
         }
+
     };
 
+   
     return (
         <div className=''>
             <form className=" bg-defaultBackground flex flex-col items-center border border-defaultPrimary rounded-lg" onSubmit={handleSubmit}>
