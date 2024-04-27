@@ -23,11 +23,11 @@ const Dashboard = () => {
   else if (hours >= 17 && hours <= 24) greet = "evening";
 
   const [isClient, setIsClient] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
-
 
   return (
     <div className="h-screen bg-defaultBackground overflow-y-scroll no-scrollbar ">
@@ -41,7 +41,7 @@ const Dashboard = () => {
           </h2>
           <UserButton afterSignOutUrl="/" />
         </div>
-        <div className="m-10 md:w-[80%] w-[100%] bg-[#4A4A4A] h-[500px] border border-[#D9D9D9] rounded-2xl overflow-hidden">
+        <div className="m-10 md:w-[80%] w-[100%] bg-[#4A4A4A] h-[500px] border border-[#D9D9D9] rounded-2xl overflow-y-scroll events">
           <div className="flex justify-between items-center p-4 ">
             <h3 className="text-[#FFFFFF] text-[22px] max-sm:text-[16px] max-md:text-[18px]">
               My Events
@@ -51,17 +51,20 @@ const Dashboard = () => {
                 <Button
                   className="bg-[#8A2BE2] flex items-center text-[#fff] max-sm:text-[16px] max-md:text-[18px]"
                   type="submit"
+                  onClick={() => setSuccess(true)}
                 >
                   <FaPlus size="20" className="p-1" />
                   Create Event
                 </Button>
               </DialogTrigger>
-              <DialogContent>
-                <EventForm />
-              </DialogContent>
+              {success && (
+                <DialogContent>
+                  <EventForm submittedState={setSuccess} />
+                </DialogContent>
+              )}
             </Dialog>
           </div>
-         <FetchData />
+          <FetchData />
         </div>
       </div>
     </div>

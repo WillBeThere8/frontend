@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import React from "react";
 import { formatDateTime, parseDateTime, getDateTimeLocal } from "@/lib/utils";
@@ -8,18 +8,40 @@ import { Label } from "@/components/ui/label";
 interface NaturalLanguageInputProps {
   expiresAt?: Date | null;
   setExpiresAt: (date: Date) => void;
+  onDateChange: (date: any) => void;
+  onTimeChange: (time: any) => void;
+  date: any;
+  time: any;
 }
-
-export const Demo = ({ onChange }: { onChange: (imageUrl: string) => void }) => {
+interface Timeparse {
+  onDateChange: (date: any) => void;
+  onTimeChange: (time: any) => void;
+  date: any;
+  time: any;
+}
+export const Demo = ({
+  onChange,
+  banner,
+}: {
+  onChange: (imageUrl: string) => void;
+  banner: any;
+}) => {
   const [selectedImage, setSelectedImage] = useState("");
   const [textContent, setTextContent] = useState(true);
   function uploadImage(e: any) {
     let imgLink = URL.createObjectURL(e.target.files[0]);
+    console.log(e.target.files[0].name);
     setSelectedImage(imgLink);
     setTextContent(false);
     // Call onChange with the image link
-    onChange(imgLink);
+    onChange(e.target.files[0]);
   }
+  useEffect(() => {
+    if (banner === "") {
+      setSelectedImage("");
+      setTextContent(true);
+    }
+  }, [banner]);
   return (
     <>
       <Label
@@ -38,9 +60,11 @@ export const Demo = ({ onChange }: { onChange: (imageUrl: string) => void }) => 
         />
 
         <div
-          className={`flex flex-col items-center w-full ${selectedImage ? "h-[200px]" : ""
-            } py-2 rounded-2xl ${textContent ? "border-dashed border-2 border-[#ffffff]" : ""
-            }  justify-center bg-cover bg-center text-center mt-4`}
+          className={`flex flex-col items-center w-full ${
+            selectedImage ? "h-[200px]" : ""
+          } py-2 rounded-2xl ${
+            textContent ? "border-dashed border-2 border-[#ffffff]" : ""
+          }  justify-center bg-cover bg-center text-center mt-4`}
           style={{ backgroundImage: `url(${selectedImage}) ` }}
         >
           {textContent && (
@@ -71,6 +95,10 @@ export const Demo = ({ onChange }: { onChange: (imageUrl: string) => void }) => 
 const NaturalLanguageInput = ({
   expiresAt,
   setExpiresAt,
+  onDateChange,
+  onTimeChange,
+  date,
+  time,
 }: NaturalLanguageInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -78,14 +106,18 @@ const NaturalLanguageInput = ({
     <Input
       ref={inputRef}
       type="text"
+      // value={expiresAt ? formatDateTime(expiresAt) : ""}
       placeholder='E.g. "tomorrow at 5pm" or "in 2 hours"'
       defaultValue={expiresAt ? formatDateTime(expiresAt) : ""}
       onBlur={(e) => {
         if (e.target.value.length > 0) {
-          const parsedDateTime = parseDateTime(e.target.value);
+          const parsedDateTime: any = parseDateTime(e.target.value);
           if (parsedDateTime) {
             setExpiresAt(parsedDateTime);
             e.target.value = formatDateTime(parsedDateTime);
+            const date = new Date(e.target.value);
+            onDateChange(date.toISOString());
+            onTimeChange(new Date(date.toISOString()).toLocaleTimeString());
           }
         }
       }}
@@ -97,25 +129,29 @@ const NaturalLanguageInput = ({
 const DateTimeLocalInput = ({
   expiresAt,
   setExpiresAt,
-  onChange
-}: NaturalLanguageInputProps & { onChange: (date: Date | null) => void }) => {
+  onDateChange,
+  onTimeChange,
+  date,
+  time,
+}: NaturalLanguageInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   return (
     <input
       type="datetime-local"
       id="expiresAt"
       name="expiresAt"
-      value={expiresAt ? getDateTimeLocal(expiresAt) : ""}
+      // value={expiresAt ? getDateTimeLocal(expiresAt) : ""}
+      value={date === "" ? "" : expiresAt ? getDateTimeLocal(expiresAt) : ""}
       onChange={(e) => {
         const expiryDate = new Date(e.target.value);
         setExpiresAt(expiryDate);
 
-        // Call onChange with the expiryDate
-        onChange(expiryDate);
-
         if (inputRef.current) {
           inputRef.current.value = formatDateTime(expiryDate);
         }
+        const date = new Date(e.target.value);
+        onDateChange(date.toISOString());
+        onTimeChange(new Date(date.toISOString()).toLocaleTimeString());
       }}
       className="w-[40px] border-none bg-white focus:outline-none focus:ring-0 sm:text-sm p-2 "
       required
@@ -123,7 +159,12 @@ const DateTimeLocalInput = ({
   );
 };
 
-export const SmartDatetimePicker = () => {
+export const SmartDatetimePicker = ({
+  onDateChange,
+  onTimeChange,
+  date,
+  time,
+}: Timeparse) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [expiresAt, setExpiresAt] = useState<Date | null>(null);
 
@@ -140,9 +181,24 @@ export const SmartDatetimePicker = () => {
         <NaturalLanguageInput
           expiresAt={expiresAt}
           setExpiresAt={setExpiresAt}
+          onDateChange={onDateChange}
+          onTimeChange={onTimeChange}
+          date={date}
+          time={time}
         />
-        <DateTimeLocalInput expiresAt={expiresAt} setExpiresAt={setExpiresAt} onChange={handleDateTimeChange} />
+        <DateTimeLocalInput
+          expiresAt={expiresAt}
+          setExpiresAt={setExpiresAt}
+          onDateChange={onDateChange}
+          onTimeChange={onTimeChange}
+          date={date}
+          time={time}
+        />
       </div>
     </div>
   );
 };
+
+// create a usesttate
+// of type Date
+// console.log(new Date(e.target.value).toISOString());

@@ -125,34 +125,92 @@ body,
       display: none;
     }
 
-
     /* Hide scrollbar for IE, Edge, and Firefox */
     .no-scrollbar {
       -ms-overflow-style: none; /* IE and Edge */
       scrollbar-width: none; /* Firefox */
     }
   }
-} 
+}
 :-webkit-scrollbar {
-    /* Customize the scrollbar width */
-    width:10px;
-    height:1px;
+  /* Customize the scrollbar width */
+  width: 10px;
+  height: 1px;
 }
 
 ::-webkit-scrollbar-track {
-    /* Customize the scrollbar track */
-    background-color: #0a0a0a;
-    border-radius: 20px;
+  /* Customize the scrollbar track */
+  background-color: #0a0a0a;
+  border-radius: 20px;
 }
 
 ::-webkit-scrollbar-thumb {
-    /* Customize the scrollbar thumb */
-    border-radius: 20px;
-    background-color: #333;
+  /* Customize the scrollbar thumb */
+  border-radius: 20px;
+  background-color: #333;
   /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
   /* Hide scrollbar for IE, Edge and Firefox */
+}
 
+.events::-webkit-scrollbar {
+  display: none;
+}
+
+/*Loader*/
+.loader {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.414);
+  backdrop-filter: blur(3px);
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 17;
+}
+
+.ball {
+  list-style: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.ball:nth-child(1) {
+  animation: bounce-1 2.1s ease-in-out infinite;
+}
+
+@keyframes bounce-1 {
+  50% {
+    transform: translateY(-90px);
+    scale: 0.3;
+  }
+}
+
+.ball:nth-child(2) {
+  animation: bounce-3 2.1s ease-in-out 0.3s infinite;
+}
+
+@keyframes bounce-2 {
+  50% {
+    transform: translateY(-90px);
+    scale: 0.3;
+  }
+}
+
+.ball:nth-child(3) {
+  animation: bounce-3 2.1s ease-in-out 0.6s infinite;
+}
+
+@keyframes bounce-3 {
+  50% {
+    transform: translateY(-90px);
+    scale: 0.3;
+  }
 }
