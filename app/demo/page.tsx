@@ -5,7 +5,7 @@ import EventTemplate from "../_ui/EventTemplate";
 
 export default function page() {
   return (
-    <div className="w-full h-full bg-defaultBackground mx-auto flex justify-center items-center">
+    <div className="w-full  pb-8 bg-defaultBackground mx-auto flex justify-center items-center">
       <EventTemplate />
     </div>
   );
