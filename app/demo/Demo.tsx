@@ -28,6 +28,9 @@ export const Demo = ({
 }) => {
   const [selectedImage, setSelectedImage] = useState("");
   const [textContent, setTextContent] = useState(true);
+  const [isClient, setIsClient] = useState(false);
+
+
   function uploadImage(e: any) {
     let imgLink = URL.createObjectURL(e.target.files[0]);
     console.log(e.target.files[0].name);
@@ -41,6 +44,7 @@ export const Demo = ({
       setSelectedImage("");
       setTextContent(true);
     }
+    setIsClient(true);
   }, [banner]);
   return (
     <>

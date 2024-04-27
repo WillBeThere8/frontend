@@ -21,18 +21,18 @@ const EventCardData: React.FC<EventCardDataProps> = ({ event }) => {
   });
   // const formattedTime = event.time.toLocaleTimeString('en-US');
   return (
-    <div className="">
+    <div className="border rounded-md bg-defaultBackground border-slate-500 shadow-md overflow-hidden">
       <Image
         src={event.banner}
         alt={event.name}
         width={700}
         height={300}
-        className="rounded-lg w-full h-[200px] object-cover"
+        className="w-full h-[200px] object-cover"
       />
-      <h2 className="font-semibold text-2xl capitalize">{event.name}</h2>
-      <div className="flex justify-between items-center gap-4 p-y-4">
-        <p>{formattedDate || "Date not available"}</p>
-        <p>{event.time}</p>
+      <h2 className="font-semibold text-xl capitalize text-white p-4">{event.name}</h2>
+      <div className="flex justify-between items-center gap-4 p-y-4 px-4">
+        <p className="text-slate-200 text-md">{formattedDate || "Date not available"}</p>
+        <p className="text-slate-200 text-md">{event.time}</p>
       </div>
     </div>
   );
