@@ -10,7 +10,6 @@ import { useUser } from "@clerk/clerk-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import FetchData from "@/components/fetchData";
 import EventForm from "@/components/eventForm";
-
 const Dashboard = () => {
   const { user } = useUser();
 
