@@ -17,6 +17,9 @@ function Hero() {
         <Button>
           <Link href={"/sign-up"}>Get Started Now</Link>
         </Button>
+        <Button className="ml-2">
+          <Link href={"/demo"}>Try Demo</Link>
+        </Button>
       </div>
       <div className="">
         <Image
