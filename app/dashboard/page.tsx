@@ -4,13 +4,12 @@ import React, { useEffect, useState } from "react";
 import { UserButton } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { FaPlus } from "react-icons/fa";
-import Image from "next/image";
 
 import { useUser } from "@clerk/clerk-react";
 
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import EventTemplate from "../_ui/EventTemplate";
-
+import FetchData from "@/components/fetchData";
+import EventForm from "@/components/eventForm";
 const Dashboard = () => {
   const { user } = useUser();
 
@@ -23,6 +22,7 @@ const Dashboard = () => {
   else if (hours >= 17 && hours <= 24) greet = "evening";
 
   const [isClient, setIsClient] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -40,7 +40,7 @@ const Dashboard = () => {
           </h2>
           <UserButton afterSignOutUrl="/" />
         </div>
-        <div className="m-10 md:w-[80%] w-[100%] bg-[#4A4A4A] h-[500px] border border-[#D9D9D9] rounded-2xl ">
+        <div className="m-10 md:w-[80%] w-[100%] bg-[#4A4A4A] h-[500px] border border-[#D9D9D9] rounded-2xl overflow-y-scroll events">
           <div className="flex justify-between items-center p-4 ">
             <h3 className="text-[#FFFFFF] text-[22px] max-sm:text-[16px] max-md:text-[18px]">
               My Events
@@ -50,31 +50,20 @@ const Dashboard = () => {
                 <Button
                   className="bg-[#8A2BE2] flex items-center text-[#fff] max-sm:text-[16px] max-md:text-[18px]"
                   type="submit"
+                  onClick={() => setSuccess(true)}
                 >
                   <FaPlus size="20" className="p-1" />
                   Create Event
                 </Button>
               </DialogTrigger>
-              <DialogContent>
-                <EventTemplate />
-              </DialogContent>
+              {success && (
+                <DialogContent>
+                  <EventForm submittedState={setSuccess} />
+                </DialogContent>
+              )}
             </Dialog>
           </div>
-          <div className="flex justify-center items-center flex-col ">
-            <h4 className="text-[#FFFFFF] text-[24px] max-sm:text-[16px] max-md:text-[18px]">
-              Welcome to you events board!
-            </h4>
-            <h5 className="text-[#FFFFFF] text-[18px] max-sm:text-[12px] max-md:text-[12px]">
-              {" "}
-              You don’t have any events yet. Try to create one✨
-            </h5>
-            <Image
-              src={"/Images/svgs/event.svg"}
-              width={400}
-              height={300}
-              alt="event-photo"
-            />
-          </div>
+          <FetchData />
         </div>
       </div>
     </div>

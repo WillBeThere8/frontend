@@ -21,7 +21,7 @@ function   NavBar() {
       {/* DESKTOP */}
       <div className=" hidden lg:block animate-in fade-in zoom-in p-10 ">
         <div className="flex justify-between items-center">
-          <h1 className="text-[#FF8C94] text-[22px]">ADH24G8</h1>
+          <Link href='/' className="text-[#FF8C94] text-[22px]">ADH24G8</Link>
           <div className="flex gap-[20px] xl:gap-[50px] text-[16px] items-center select-none text-[#FFFFFF]">
             <Link
               href="/faqs"
