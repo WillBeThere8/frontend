@@ -4,17 +4,20 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { LiaTimesSolid } from "react-icons/lia";
 import { IoIosMenu } from "react-icons/io";
+import { usePathname } from "next/navigation";
 
 
   
 function   NavBar() {
+    const pathname = usePathname();
+
   const [menu, setMenu] = React.useState<boolean>(false);
   const toggleMenu = () => {
     setMenu(!menu);
   };
 
   return (
-    <div className="md:sticky md:top-0 md:shadow-none z-20 text-[#FF8C94]">
+    <div className="md:sticky md:top-0 md:shadow-none z-20 h-[60px] text-[#FF8C94]">
       {/* DESKTOP */}
       <div className=" hidden lg:block animate-in fade-in zoom-in p-10 ">
         <div className="flex justify-between items-center">
@@ -22,25 +25,25 @@ function   NavBar() {
           <div className="flex gap-[20px] xl:gap-[50px] text-[16px] items-center select-none text-[#FFFFFF]">
             <Link
               href="/faqs"
-              className={`hover:text-[#8A2BE2] hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
+              className={` link ${pathname === "/faqs" ? "text-[#8a2be2]" : ""} hover:text-[#8A2BE2] hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
             >
               FAQs
             </Link>
             <Link
               href="/about"
-              className={`hover:text-[#8A2BE2]  hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
+              className={`link ${pathname === "/about" ? "text-[#8a2be2]" : ""} hover:text-[#8A2BE2]  hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
             >
               About
             </Link>
             <Link
               href="/contact"
-              className={`hover:text-[#8A2BE2] hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
+              className={`link ${pathname === "/contact" ? "text-[#8a2be2]" : ""}hover:text-[#8A2BE2] hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
             >
               Contact
             </Link>
             <Link
               href="/sign-in"
-              className={`hover:text-[#8A2BE2] hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
+              className={`link ${pathname === "/sign-in" ? "text-[#8a2be2]" : ""}hover:text-[#8A2BE2] hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
             >
               Sign in
             </Link>
@@ -59,7 +62,7 @@ function   NavBar() {
           </div>
           <div className="flex items-center gap-[40px]">
             {menu ? (
-          <LiaTimesSolid
+              <LiaTimesSolid
                 size={24}
                 className="cursor-pointer animate-in fade-in zoom-in text-[#ffffff]"
                 onClick={toggleMenu}
