@@ -14,7 +14,9 @@ function FaqsLayout ({ children }: { children: React.ReactNode }) {
       <div className=" h-[100px]">
         <NavBar />
       </div>
-      <div className="flex items-center justify-center bg-black text-white my-10 px-5">
+      <div className="flex flex-col items-center justify-center bg-black text-white 
+      my-10 px-5">
+        <h1 className="text-3xl text-white">Frequently Asked Questions.</h1>
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1" className="my-5">
             <AccordionTrigger>What is willbethere all about ?</AccordionTrigger>

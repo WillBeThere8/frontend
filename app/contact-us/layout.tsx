@@ -1,9 +1,9 @@
 import React from "react";
 import NavBar from "@/components/Navbar";
 
-const Contact = () => {
+function ContactLayout ({ children }: { children: React.ReactNode }) { 
   return (
-    <div>
+    <div className="">
       <div className=" h-[100px] bg-black">
         <NavBar />
       </div>
@@ -73,15 +73,16 @@ const Contact = () => {
             </div>
 
             <div className="mt-6 sm:col-span-full">
-              <button className="bg-purple-500 py-2 px-4 text-white rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50">
+              <button className="bg-[#8a2be2] py-2 px-4 text-white rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50">
                 Submit
               </button>
             </div>
           </div>
         </form>
+        {children}
       </div>
     </div>
   );
 };
 
-export default Contact;
+export default ContactLayout;
