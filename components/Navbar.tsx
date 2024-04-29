@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import Link from "next/link";
@@ -6,10 +6,8 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { IoIosMenu } from "react-icons/io";
 import { usePathname } from "next/navigation";
 
-
-  
-function   NavBar() {
-    const pathname = usePathname();
+function NavBar() {
+  const pathname = usePathname();
 
   const [menu, setMenu] = React.useState<boolean>(false);
   const toggleMenu = () => {
@@ -21,29 +19,47 @@ function   NavBar() {
       {/* DESKTOP */}
       <div className=" hidden lg:block animate-in fade-in zoom-in p-10 ">
         <div className="flex justify-between items-center">
-          <Link href='/' className="text-[#FF8C94] text-[22px]">ADH24G8</Link>
+          <Link href="/" className="text-[#FF8C94] text-[22px]">
+            ADH24G8
+          </Link>
           <div className="flex gap-[20px] xl:gap-[50px] text-[16px] items-center select-none text-[#FFFFFF]">
             <Link
               href="/faqs"
-              className={` link ${pathname === "/faqs" ? "text-[#8a2be2] border-b-2 border-[#8a2be2]" : ""} hover:text-[#8A2BE2] hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
+              className={` link ${
+                pathname === "/faqs"
+                  ? "text-[#8a2be2] border-b-2 border-[#8a2be2]"
+                  : ""
+              } hover:text-[#8A2BE2] hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
             >
               FAQs
             </Link>
             <Link
               href="/about"
-              className={`link ${pathname === "/about" ? "text-[#8a2be2] border-b-2 border-[#8a2be2]" : ""} hover:text-[#8A2BE2]  hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
+              className={`link ${
+                pathname === "/about"
+                  ? "text-[#8a2be2] border-b-2 border-[#8a2be2]"
+                  : ""
+              } hover:text-[#8A2BE2]  hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
             >
               About
             </Link>
             <Link
-              href="/contact-us"
-              className={`link ${pathname === "/contact-us" ? "text-[#8a2be2] border-b-2 border-[#8a2be2]" : ""} hover:text-[#8A2BE2] hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
+              href="/contact"
+              className={`link ${
+                pathname === "/contact"
+                  ? "text-[#8a2be2] border-b-2 border-[#8a2be2]"
+                  : ""
+              } hover:text-[#8A2BE2] hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
             >
               Contact
             </Link>
             <Link
               href="/sign-in"
-              className={`link ${pathname === "/sign-in" ? "text-[#8a2be2] border-b-2 border-[#8a2be2]" : ""}hover:text-[#8A2BE2] hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
+              className={`link ${
+                pathname === "/sign-in"
+                  ? "text-[#8a2be2] border-b-2 border-[#8a2be2]"
+                  : ""
+              }hover:text-[#8A2BE2] hover:transition-all text-xl font-[600] cursor-pointer flex items-center gap-2`}
             >
               Sign in
             </Link>
