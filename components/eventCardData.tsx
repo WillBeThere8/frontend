@@ -1,11 +1,16 @@
 import Image from "next/image";
 import React from "react";
+import { Button } from "./ui/button";
+import { FaPlus } from "react-icons/fa";
+import { useToast } from "@/components/ui/use-toast";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 interface Event {
   banner: string;
   name: string;
   date: Date;
   time: any;
+  id: number;
   // Add other properties if present
 }
 
@@ -19,6 +24,14 @@ const EventCardData: React.FC<EventCardDataProps> = ({ event }) => {
     month: "long",
     day: "numeric",
   });
+  const { toast } = useToast();
+
+  const onCopy = () => {
+    toast({
+      title: "Successful",
+      description: `Copied invite link successfully`,
+    });
+  };
   // const formattedTime = event.time.toLocaleTimeString('en-US');
   return (
     <div className="border rounded-md bg-defaultBackground border-slate-500 shadow-md overflow-hidden">
@@ -29,11 +42,25 @@ const EventCardData: React.FC<EventCardDataProps> = ({ event }) => {
         height={300}
         className="w-full h-[200px] object-cover"
       />
-      <h2 className="font-semibold text-xl capitalize text-white p-4">{event.name}</h2>
+      <h2 className="font-semibold text-xl capitalize text-white p-4">
+        {event.name}
+      </h2>
       <div className="flex justify-between items-center gap-4 p-y-4 px-4">
-        <p className="text-slate-200 text-md">{formattedDate || "Date not available"}</p>
+        <p className="text-slate-200 text-md">
+          {formattedDate || "Date not available"}
+        </p>
         <p className="text-slate-200 text-md">{event.time}</p>
       </div>
+      <CopyToClipboard text={`localhost:3000/invite/${event.id}/${event.name}`}>
+        <Button
+          className="bg-[#8A2BE2] flex items-center w-full text-[#fff] max-sm:text-[16px] max-md:text-[18px]"
+          type="submit"
+          onClick={onCopy}
+        >
+          <FaPlus size="20" className="p-1" />
+          Copy Invite Link
+        </Button>
+      </CopyToClipboard>
     </div>
   );
 };

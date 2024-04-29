@@ -1,3 +1,4 @@
+"use client";
 import { Demo, SmartDatetimePicker } from "@/app/demo/Demo";
 import { Label } from "@radix-ui/react-label";
 import { Input } from "./ui/input";
@@ -31,11 +32,11 @@ const EventForm = ({
   const [formError, setFormError] = useState<string | null>("");
   const { toast } = useToast();
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isClient, setIsClient] = useState(false)
- 
+  const [isClient, setIsClient] = useState(false);
+
   useEffect(() => {
-    setIsClient(true)
-  }, [])
+    setIsClient(true);
+  }, []);
 
   const handleDemoChange = (imageUrl: any) => {
     // Handle the change event for Demo component
