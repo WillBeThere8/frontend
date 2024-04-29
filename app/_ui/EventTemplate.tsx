@@ -35,7 +35,9 @@ export default function EventTemplate() {
         <form>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col ">
-              <Demo />
+              <Demo onChange={function (imageUrl: string): void {
+                throw new Error("Function not implemented.");
+              } } banner={undefined} />
 
               <Label
                 htmlFor=""
@@ -65,7 +67,11 @@ export default function EventTemplate() {
                 required
                 onChange={(e) => setDescrip(e.target.value)}
               />
-              <SmartDatetimePicker />
+              <SmartDatetimePicker onDateChange={function (date: any): void {
+                throw new Error("Function not implemented.");
+              } } onTimeChange={function (time: any): void {
+                throw new Error("Function not implemented.");
+              } } date={undefined} time={undefined} />
 
               <Label
                 htmlFor=""
@@ -107,9 +113,8 @@ interface ModalProps {
 const Modal = ({ sethasNotCreate, hasNotCreate }: ModalProps) => {
   return (
     <div
-      className={`bg-transparent backdrop-blur-sm absolute left-0 top-0 w-full h-full ${
-        hasNotCreate ? "hidden" : "flex"
-      }  justify-center items-center`}
+      className={`bg-transparent backdrop-blur-sm absolute left-0 top-0 w-full h-full ${hasNotCreate ? "hidden" : "flex"
+        }  justify-center items-center`}
     >
       <div className="w-[40%] bg-[#0F0F0F] py-4 flex flex-col items-center gap-y-[4rem] rounded-md">
         <p>Create account to continue</p>
