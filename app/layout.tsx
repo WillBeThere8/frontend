@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   },
   description:
     "Based platform that empowers users to register, host events, seamlessly share event links with friends, users, or communities, and effortlessly track attendance status.",
+  metadataBase: new URL("https://will-be-theree.vercel.app"),
 };
 
 export default function RootLayout({
