@@ -4,8 +4,7 @@ import { useTheme } from "next-themes";
 
 // @pnpm-ignore-directory @types/sonner
 import { Toaster as Sonner } from "sonner";
-
-type ToasterProps = React.ComponentProps<typeof Sonner>;
+import { ToasterProps } from "sonner";
 
 const Toaster = ({ ...props }: ToasterProps) => {
   const { theme = "system" } = useTheme();
