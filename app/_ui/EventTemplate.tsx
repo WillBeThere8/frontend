@@ -35,9 +35,7 @@ export default function EventTemplate() {
         <form>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col ">
-              <Demo onChange={function (imageUrl: string): void {
-                throw new Error("Function not implemented.");
-              } } banner={undefined} />
+              <Demo />
 
               <Label
                 htmlFor=""
@@ -67,11 +65,7 @@ export default function EventTemplate() {
                 required
                 onChange={(e) => setDescrip(e.target.value)}
               />
-              <SmartDatetimePicker onDateChange={function (date: any): void {
-                throw new Error("Function not implemented.");
-              } } onTimeChange={function (time: any): void {
-                throw new Error("Function not implemented.");
-              } } date={undefined} time={undefined} />
+              <SmartDatetimePicker />
 
               <Label
                 htmlFor=""
