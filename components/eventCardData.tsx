@@ -51,7 +51,9 @@ const EventCardData: React.FC<EventCardDataProps> = ({ event }) => {
         </p>
         <p className="text-slate-200 text-md">{event.time}</p>
       </div>
-      <CopyToClipboard text={`localhost:3000/invite/${event.id}/${event.name}`}>
+      <CopyToClipboard
+        text={`https://will-be-theree.vercel.app/invite/${event.id}/${event.name}`}
+      >
         <Button
           className="bg-[#8A2BE2] flex items-center w-full text-[#fff] max-sm:text-[16px] max-md:text-[18px]"
           type="submit"
