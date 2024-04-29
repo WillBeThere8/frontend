@@ -5,6 +5,7 @@ import Link from "next/link";
 import { LiaTimesSolid } from "react-icons/lia";
 import { IoIosMenu } from "react-icons/io";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 function NavBar() {
   const pathname = usePathname();
@@ -20,7 +21,12 @@ function NavBar() {
       <div className=" hidden lg:block animate-in fade-in zoom-in p-10 ">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-[#FF8C94] text-[22px]">
-            ADH24G8
+            <Image
+              src="/Images/svgs/adc-logo.svg"
+              alt="logo"
+              width={128}
+              height={16}
+            />
           </Link>
           <div className="flex gap-[20px] xl:gap-[50px] text-[16px] items-center select-none text-[#FFFFFF]">
             <Link
