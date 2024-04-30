@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { FaPlus } from "react-icons/fa";
 import { useToast } from "@/components/ui/use-toast";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { FaLink } from "react-icons/fa";
 
 interface Event {
   banner: string;
@@ -59,7 +60,7 @@ const EventCardData: React.FC<EventCardDataProps> = ({ event }) => {
           type="submit"
           onClick={onCopy}
         >
-          <FaPlus size="20" className="p-1" />
+          <FaLink size="20" className="p-1" />
           Copy Invite Link
         </Button>
       </CopyToClipboard>
