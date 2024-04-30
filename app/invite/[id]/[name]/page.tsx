@@ -132,11 +132,11 @@ function Page({ params }: { params: { id: string; name: string } }) {
     );
   }
   return (
-    <div className="h-screen  bg-defaultBackground relative">
+    <div className="pb-6 md:pb-0 md:h-screen  bg-defaultBackground relative">
       <NavBar />
       <form onSubmit={handleSubmit}>
         <div className="w-full max-w-[1300px] mx-auto  px-9 mt-10">
-          <div className="w-full h-[18rem] rounded-xl overflow-hidden">
+          <div className="w-full h-[8rem] md:h-[18rem] rounded-xl overflow-hidden">
             <Image
               src={eventData?.[0]?.banner || ""}
               alt="event image"
@@ -189,6 +189,7 @@ function Page({ params }: { params: { id: string; name: string } }) {
                         placeholder="Enter you name"
                         className="bg-[#4A4A4A] border-0 focus-visible:ring-offset-0 focus-visible:ring-0 mb-[0.875rem]"
                         onChange={(e) => setFullName(e.target.value)}
+                        value={full_name || ""}
                         required
                       />
                     </div>
@@ -200,6 +201,7 @@ function Page({ params }: { params: { id: string; name: string } }) {
                         placeholder="Enter you email"
                         className="bg-[#4A4A4A] border-0 focus-visible:ring-offset-0 focus-visible:ring-0 mb-[0.875rem]"
                         onChange={(e) => setEmail(e.target.value)}
+                        value={email || ""}
                         required
                       />
                     </div>{" "}
@@ -211,6 +213,7 @@ function Page({ params }: { params: { id: string; name: string } }) {
                         placeholder="Enter your phone number"
                         className="bg-[#4A4A4A] border-0 focus-visible:ring-offset-0 focus-visible:ring-0 mb-[0.875rem]"
                         onChange={(e) => setPhone(Number(e.target.value))}
+                        value={phone_number || ""}
                         required
                       />
                     </div>
@@ -231,6 +234,7 @@ function Page({ params }: { params: { id: string; name: string } }) {
                         placeholder="Enter your phone number"
                         className="bg-[#4A4A4A] border-0 focus-visible:ring-offset-0 focus-visible:ring-0 mb-[0.875rem]"
                         onChange={(e) => setPlusone(e.target.value)}
+                        value={plus_one || ""}
                         required
                       />
                     </div>

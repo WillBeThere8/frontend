@@ -16,9 +16,9 @@ function NavBar() {
   };
 
   return (
-    <div className="md:sticky md:top-0 md:shadow-none z-20 h-[60px] text-[#FF8C94]">
+    <div className="sticky w-full top-0 shadow-none backdrop-blur-lg z-20 h-[60px] text-[#FF8C94]">
       {/* DESKTOP */}
-      <div className=" hidden lg:block animate-in fade-in zoom-in p-10 ">
+      <div className="w-full h-full  animate-in fade-in zoom-in p-3 md:p-10">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-[#FF8C94] text-[22px]">
             <Image
