@@ -157,7 +157,7 @@ function Page({ params }: { params: { id: string; name: string } }) {
                 </span>
               </CardTitle>
               <CardDescription>{eventData?.[0]?.name}</CardDescription>
-              <div className="absolute right-0 top-6 flex gap-x-4">
+              <div className="md:absolute mt-4 md:right-0 md:top-6 flex gap-x-4">
                 <FaCalendar />
                 <p>
                   {eventData?.[0]?.date &&
