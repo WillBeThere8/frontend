@@ -80,7 +80,12 @@ function NavBar() {
       >
         <div className="flex justify-between mx-[10px]">
           <div className="flex gap-[50px] text-[16px] items-center select-none">
-            <h1>ADH24G8</h1>
+            <Image
+              src="/Images/svgs/adc-logo.svg"
+              alt="logo"
+              width={100}
+              height={10}
+            />
           </div>
           <div className="flex items-center gap-[40px] ">
             {menu ? (

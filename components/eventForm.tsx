@@ -49,6 +49,7 @@ const EventForm = ({
     setIsSuccess(true);
     if (!name || !description || !location) {
       setFormError("Please fill in all fields correctly");
+      setIsSuccess(false);
       return;
     }
 
