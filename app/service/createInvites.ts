@@ -38,3 +38,12 @@ export async function fetchAttendeesForEvent(eventId: number) {
   }
   return attendees;
 }
+
+export async function fetchEventforAttendees(eventId: number) {
+  let { data: events, error } = await supabase
+    .from("events")
+    .select("*")
+    .eq("id", eventId);
+
+  return { events, error };
+}
