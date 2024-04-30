@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 import NavBar from "@/components/Navbar";
-import Image from 'next/image';
+import Image from "next/image";
 
 function AboutLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -9,19 +9,17 @@ function AboutLayout({ children }: { children: React.ReactNode }) {
         <NavBar />
       </div>
       <div
-        className="flex justify-center items-center  "
+        className="flex justify-center items-center  h-[80%]"
         style={{
           backgroundImage: `url("/Images/signup.webp")`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          height: "600px",
+
           filter: "grayscale(100%)",
         }}
       >
         <div className="flex justify-center items-center flex-col p-5 w-[500px] bg-gray-900 max-sm:w-[360px]">
-          <h1 className="text-white text-3xl pb-5">
-             About Willbethere
-          </h1>
+          <h1 className="text-white text-3xl pb-5">About Willbethere</h1>
           <h2 className="text-white pb-5">
             This online RSVP service called Will Be There, that allows
             registered users to create events, share the link with their
@@ -36,4 +34,4 @@ function AboutLayout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default AboutLayout
+export default AboutLayout;
