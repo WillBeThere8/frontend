@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { FaLink } from "react-icons/fa";
+import Link from "next/link";
 
 interface Event {
   banner: string;
@@ -35,13 +36,15 @@ const EventCardData: React.FC<EventCardDataProps> = ({ event }) => {
   // const formattedTime = event.time.toLocaleTimeString('en-US');
   return (
     <div className="border rounded-md bg-defaultBackground border-slate-500 shadow-md overflow-hidden">
+      <Link href={`/dashboard/event/${event.id}`}>
       <Image
         src={event.banner}
         alt={event.name}
         width={700}
         height={300}
         className="w-full h-[200px] object-cover"
-      />
+        />
+      </Link>
       <h2 className="font-semibold text-xl capitalize text-white p-4">
         {event.name}
       </h2>
